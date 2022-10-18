@@ -1,4 +1,6 @@
+import { GoogleLoginProvider, SocialAuthService } from 'angularx-social-login';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -7,13 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router:Router,public socialAuthService:SocialAuthService) { }
 
   ngOnInit(): void {
   }
 
 
-  loginWithGoogle(){
-    
+  loginWithGoogle():void{
+this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID).then(()=>this.router.navigate(['home']))
+
+
   }
 }
