@@ -1,1 +1,7 @@
-<p>home works!</p>
+<div *ngIf="socialAuthservice.authState | async as socialUser">
+    <p>Hello, {{socialUser.name}}!</p>
+    <br>
+    <p>Your email: {{socialUser.email}}</p>
+    <br>
+    <button mat-raised-button (click)="logout()">Logout</button>
+  </div>

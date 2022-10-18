@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { SocialAuthService } from 'angularx-social-login';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router:Router,public socialAuthservice:SocialAuthService) { }
 
   ngOnInit(): void {
+  }
+
+  logout():void{
+    this.socialAuthservice.signOut().then(()=>{
+      this.router.navigate(['login'])
+    })
   }
 
 }
